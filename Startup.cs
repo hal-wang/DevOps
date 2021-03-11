@@ -9,15 +9,9 @@ namespace DevOps
 {
     public class Startup
     {
-        public Startup(IWebHostEnvironment env)
+        public Startup(IConfiguration configuration)
         {
-            var builder = new ConfigurationBuilder()
-                   .SetBasePath(env.ContentRootPath)
-                   .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
-                   .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: true)
-                   .AddEnvironmentVariables();
-            Configuration = builder.Build();
-            ConfigHelper.Instance.Init(Configuration);
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -25,7 +19,6 @@ namespace DevOps
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
             services.AddControllers();
             services.AddSwaggerGen(c =>
             {

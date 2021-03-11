@@ -47,5 +47,25 @@ namespace DevOps.Controllers
             if (proc == null) throw new Exception("Can not exec");
             proc.WaitForExit();
         }
+
+        internal static string GetGitAccount(string variableName)
+        {
+            var variable = Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User);
+            if (string.IsNullOrEmpty(variable)) return null;
+
+            var strs = variable.Split('/');
+            if (strs.Length < 1) return null;
+            else return strs[0];
+        }
+
+        internal static string GetGitPassword(string variableName)
+        {
+            var variable = Environment.GetEnvironmentVariable(variableName, EnvironmentVariableTarget.User);
+            if (string.IsNullOrEmpty(variable)) return null;
+
+            var strs = variable.Split('/');
+            if (strs.Length < 2) return null;
+            else return strs[1];
+        }
     }
 }

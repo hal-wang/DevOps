@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
-using System;
 
 namespace DevOps
 {
@@ -9,10 +7,6 @@ namespace DevOps
     {
         public static void Main(string[] args)
         {
-            IConfiguration configuration = new ConfigurationBuilder()
-                .SetBasePath(Environment.CurrentDirectory)
-                .AddJsonFile("appSettings.json")
-                .Build();
             CreateHostBuilder(args).Build().Run();
         }
 

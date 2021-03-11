@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace DevOps.Controllers
 {
@@ -8,7 +7,7 @@ namespace DevOps.Controllers
     public class GitHubController : GitBaseController
     {
         public GitHubController()
-            : base("github.com", ConfigHelper.Instance.Get<string>("GitAccount:GitHub"), Environment.GetEnvironmentVariable("GitHubPassword", EnvironmentVariableTarget.User))
+            : base("github.com", GetGitAccount("GitHubAccount"), GetGitPassword("GitHubAccount"))
         {
 
         }

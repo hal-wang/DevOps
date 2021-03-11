@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace DevOps.Controllers
 {
@@ -8,7 +7,7 @@ namespace DevOps.Controllers
     public class GiteeController : GitBaseController
     {
         public GiteeController()
-            : base("gitee.com", ConfigHelper.Instance.Get<string>("GitAccount:Gitee"), Environment.GetEnvironmentVariable("GiteePassword", EnvironmentVariableTarget.User))
+            : base("gitee.com", GetGitAccount("GiteeAccount"), GetGitPassword("GiteeAccount"))
         {
 
         }
